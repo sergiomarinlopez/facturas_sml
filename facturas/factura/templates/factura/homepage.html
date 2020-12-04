@@ -1,0 +1,42 @@
+{% extends 'factura/base.html' %}
+
+{% block title %} Factura {{ f }} {% endblock %}
+
+
+{% block content %}
+
+<h1 class="title">Facturas</h1>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Numero</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Nombre del cliente</th>
+            <th scope="col">Dirección</th>
+            <th scope="col">Líneas de facturación</th>
+            <th scope="col">Precio total</th>
+            <th scope="col">Precio total con IVA</th>
+            <th scope="col">Detalles</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for f in facturas %}
+        <tr>
+            <td>{{ f.id_factura }}</td>
+            <td>{{ f.num }}</td>
+            <td>{{ f.anio }}</td>
+            <td>{{ f.cliente_nombre }}</td>
+            <td>{{ f.cliente_direccion }}</td>
+            <td>{{ f.num_lineas }}</td>
+            <td>{{ f.precio_factura }}€</td>
+            <td>{{ f.precio_factura_iva }}€</td>
+            <td><p><a href="{% url 'detalle_factura' f.id_factura %}">Ver detalles &raquo;</a></p></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock content %}

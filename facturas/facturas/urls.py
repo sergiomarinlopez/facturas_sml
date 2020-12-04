@@ -15,7 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+import factura.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', factura.views.homepage, name="homepage"),
+    path(
+        'facturas/<int:id_factura>',
+        factura.views.detalle_factura,
+        name="detalle_factura",
+        ),
 ]

@@ -1,0 +1,36 @@
+{% extends 'factura/base.html' %}
+
+{% block title %} Factura {{ f }} {% endblock %}
+
+
+{% block content %}
+
+<h1 class="title">Facturas</h1>
+
+<table class="table">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id Factura</th>
+            <th scope="col">Id Linea</th>
+            <th scope="col">Nombre del producto</th>
+            <th scope="col">Unidades</th>
+            <th scope="col">Precio unitario</th>
+            <th scope="col">Precio total</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for l in lineas %}
+        <tr>
+            <td>{{ l.factura }}</td>
+            <td>{{ l.id_linea }}</td>
+            <td>{{ l.nombre_producto }}</p>
+            <td>{{ l.unidades }}</p>
+            <td>{{ l.precio_unitario }}€</p>
+            <td>{{ l.precio_real }}€</p>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock content %}
